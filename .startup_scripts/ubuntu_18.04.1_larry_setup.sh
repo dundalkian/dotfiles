@@ -1,13 +1,9 @@
-# This portion will have to be run by hand, but still walks through the process.
-# Creating a custom iso at some point for bionicdog will remove this requirement.
 
 # Get an internet connection
 #sudo apt update
 #sudo apt install git
 #cd ~
 #git clone https://github.com/dundalkian/dotfiles.git
-# enter github username (This won't be necessary when this is no longer a private repo)
-# enter github password (hint, the less patriotic one)
 #cd dotfiles/.startup_scripts
 #sh ubuntu_18.04.1_larry_setup.sh
 
@@ -86,7 +82,7 @@ sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ bionic-updates
 sudo apt update
 sudo apt upgrade
 sudo apt remove vim-tiny vim-common
-sudo apt install vim zsh htop neofetch tree stow 
+sudo apt install vim zsh htop neofetch tree stow make 
 
 echo Install dotfiles to your home directory? [y/n]
 read choice
