@@ -44,6 +44,7 @@ install_sway()
 
 stow_dots()
 {
+    cd ~/dotfiles
 	# Remove any existing configuration folders/files that we plan to symlink 
 	# (Stow is a very ... unconfrontational command?)
 	#
@@ -82,16 +83,29 @@ sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ bionic univers
 sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ bionic-updates universe multiverse"
 
 # Will need 'stow' to symlink dotfiles to home directory
+sudo apt update
+sudo apt upgrade
 sudo apt remove vim-tiny vim-common
 sudo apt install vim zsh htop neofetch tree stow 
 
+echo Install dotfiles to your home directory? [y/n]
+read choice
+
+if [ $choice = y ]
+then 
+	echo Removing existing dotfiles and symlinking dotfiles to home...
+	stow_dots
+	cd ~
+else 
+    echo Skipping dotfile install
+fi
 
 
 # Dealing with Sway and Wayland currently seems to be quite annoying, expecting it to break often
 echo Do you want to install the Sway tiling Wayland compositor? [y/n]
-read CHOICE
+read choice
 
-if ["$CHOICE" = "y"]
+if [ $choice = y ]
 then 
 	echo Installing Wayland, Wlc, and Sway...
 	install_sway

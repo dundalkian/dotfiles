@@ -33,4 +33,6 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-alias tree = 'echo tree' tree -ashI .git
+
+# I wonder if the zsh global alias ability would be worth it or cause trouble
+alias -g tree="echo \"Aliased 'tree' with .git folder ignored.\" && tree -I .git -sha"
