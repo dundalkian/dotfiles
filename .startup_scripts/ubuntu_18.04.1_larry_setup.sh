@@ -20,7 +20,7 @@ install_sway()
     # Wayland
     for target in libgles2-mesa-dev libdrm2 libdrm-dev libegl1-mesa-dev xwayland
     do
-        manually install
+        manually_install
     done
     # Wlc install
     for target in build-essential libinput10 libinput-dev libxkbcommon0 libxkbcommon-dev libudev-dev libxcb-image0 libxcb-image0-dev libxcb-composite0 libxcb-composite0-dev libxcb-xkb1 libxcb-xkb-dev libgbm1 libgbm-dev libdbus-1-dev libsystemd-dev zlib1g-dev libpixman-1-dev libxcb-ewmh-dev wayland-protocols
