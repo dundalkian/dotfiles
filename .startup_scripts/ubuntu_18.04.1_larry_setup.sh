@@ -85,18 +85,14 @@ stow_dots()
  
 cd ~
 
-# Adding the universe and multiverse repos
-sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ bionic universe multiverse"
-sudo add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ bionic-updates universe multiverse"
-
-# VITAL IMPORTS HERE
-sudo apt install sl
+# Adding desired repos
+sudo cat pkg_src.txt > /etc/apt/sources.list
 
 # Will need 'stow' to symlink dotfiles to home directory
 sudo apt update
 sudo apt upgrade
-sudo apt remove vim-tiny vim-common
-sudo apt install vim zsh htop neofetch tree stow make cmake tldr gdebi
+sudo apt remove vim-tiny 
+sudo apt install sl vim zsh htop neofetch tree stow make cmake tldr gdebi curl vlc
 
 echo Install dotfiles to your home directory? [y/n]
 read choice
