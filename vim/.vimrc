@@ -18,3 +18,6 @@ set shiftwidth=4
 
 " Enabling this will make the tab key (in insert mode) insert spaces or tabs to go to the next indent of the next tabstop when the cursor is at the beginning of a line (i.e. the only preceding characters are whitespace).
 set smarttab
+
+set number
+set relativenumber

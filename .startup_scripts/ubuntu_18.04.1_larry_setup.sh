@@ -11,7 +11,11 @@
 manually_install()
 {
 cd ~/Downloads
-sudo apt-get install -y $target 2>&1 | grep -Po "(?<=fetch ).*(?=  Redirection)" | xargs wget 2>&1 | grep -Po "(?<= - ‘).*(?=’ saved)" | sudo xargs gdebi --n
+# shouldn't be needed anymore
+#sudo apt-get install -y $target 2>&1 | grep -Po "(?<=fetch ).*(?=  Redirection)" | xargs wget 2>&1 | grep -Po "(?<= - ‘).*(?=’ saved)" | sudo xargs dpkg -i 
+sudo apt install -f
+sudo apt update
+sudo apt upgrade
 }
 
 install_sway()
@@ -20,12 +24,12 @@ install_sway()
     # Wayland
     for target in libgles2-mesa-dev libdrm2 libdrm-dev libegl1-mesa-dev xwayland
     do
-        manually_install
+        sudo apt install $target
     done
     # Wlc install
     for target in build-essential libinput10 libinput-dev libxkbcommon0 libxkbcommon-dev libudev-dev libxcb-image0 libxcb-image0-dev libxcb-composite0 libxcb-composite0-dev libxcb-xkb1 libxcb-xkb-dev libgbm1 libgbm-dev libdbus-1-dev libsystemd-dev zlib1g-dev libpixman-1-dev libxcb-ewmh-dev wayland-protocols
     do    
-        manually_install
+        sudo apt install $target
     done
     cd ~/Downloads
     git clone https://github.com/Cloudef/wlc.git
@@ -40,7 +44,7 @@ install_sway()
     # Sway
     for target in libpcre3 libpcre3-dev libcairo2 libcairo2-dev libpango1.0-0 libpango1.0-dev asciidoc libjson-c3 libjson-c-dev libcap-dev xsltproc libpam0g-dev
     do    
-        manually_install
+        sudo apt install $target
     done    
     cd ~/Downloads
     git clone https://github.com/SirCmpwn/sway.git
@@ -84,15 +88,39 @@ stow_dots()
 
  
 cd ~
-
 # Adding desired repos
-sudo cat pkg_src.txt > /etc/apt/sources.list
+sudo apt-add-repository universe multiverse main restricted 
+
+# I have problems with my default DNS so lets change it up.
+sudo apt install resolvconf
+# Echo loud
+sudo sh -c 'echo -e "nameserver 1.1.1.1\nnameserver 1.0.0.1" > /etc/resolvconf/resolv.conf.d/head'
+sudo resolvconf -u
 
 # Will need 'stow' to symlink dotfiles to home directory
 sudo apt update
-sudo apt upgrade
-sudo apt remove vim-tiny 
-sudo apt install sl vim zsh htop neofetch tree stow make cmake tldr gdebi curl vlc
+sudo apt upgrade 
+for target in sl vim zsh htop neofetch tree stow make cmake tldr gdebi curl vlc tee virtualbox virtualbox-ext-pack python  
+do
+    sudo apt install $target
+done
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# Echo soft
+if grep "google" "/etc/apt/sources.list" 
+then
+    echo Google repository already added to /etc/apt/sources.list!
+else
+    sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list'
+fi
+sudo apt update
+sudo apt install google-chrome-stable
+xdg-mime default google-chrome.desktop text/html
+xdg-mime default google-chrome.desktop x-scheme-handler/http
+xdg-mime default google-chrome.desktop x-scheme-handler/https
+xdg-mime default google-chrome.desktop x-scheme-handler/about
+
+
+
 
 echo Install dotfiles to your home directory? [y/n]
 read choice

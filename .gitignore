@@ -9,4 +9,4 @@
 [._]sw[a-p]
 .viminfo
 Session.vim
-
+.netrwhist
