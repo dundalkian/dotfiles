@@ -89,7 +89,11 @@ stow_dots()
  
 cd ~
 # Adding desired repos
-sudo apt-add-repository universe multiverse main restricted 
+sudo apt-add-repository universe
+sudo apt-add-repository multiverse
+sudo apt-add-repository main
+sudo apt-add-repository restricted
+
 
 # I have problems with my default DNS so lets change it up.
 sudo apt install resolvconf
