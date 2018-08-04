@@ -10,3 +10,5 @@
 .viminfo
 Session.vim
 .netrwhist
+
+/config/.config/browsh/firefox_profile/

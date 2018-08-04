@@ -42,11 +42,13 @@ git config --global user.email "larrysteele117@gmail.com"
 git config --global user.name "Larry Steele"
 
 sudo pacman -Syu 
-for target in sl vim zsh htop neofetch tree stow tldr curl xorg-server xorg-xinit
+for target in sl vim zsh htop neofetch tree stow tldr curl awk sed i3 rxvt-unicode feh xorg-server xorg-xinit 
 do
-    sudo pacman -S $target
+    sudo pacman -S $target --noconfirm
 done
 
+echo -e "# exec feh --bg-scale /dir\nexec i3" > ~/.xinitrc
+echo "exec /usr/bin/Xorg -nolisten tcp \"\$@\" vt\$XDG_VTNR" > ~/.xserverrc
 
 echo Install dotfiles to your home directory? [y/n]
 read choice
