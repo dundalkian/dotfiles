@@ -9,6 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+
+exec --no-startup-id feh --randomize --bg-fill ~/backgrounds/*
+exec --no-startup-id compton -b
+
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -168,3 +172,4 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
 }
+
