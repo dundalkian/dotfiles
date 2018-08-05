@@ -2,6 +2,19 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+### PYWAL ###
+# https://github.com/dylanaraps/pywal
+
+# Apply theme to new terminals
+# Import colorscheme from 'wal' asynchronously
+# &    # Run the process in the background
+# ( )  # Hide shell job control messages
+(cat ~/.cache/wal/sequences &)
+# Adds support for TTYs, optional
+source ~/.cache/wal/colors-tty.sh
+
+### END PYWAL ###
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;

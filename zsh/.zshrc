@@ -1,3 +1,17 @@
+### PYWAL ###
+# https://github.com/dylanaraps/pywal
+
+# Apply theme to new terminals
+# Import colorscheme from 'wal' asynchronously
+# &    # Run the process in the background
+# ( )  # Hide shell job control messages
+(cat ~/.cache/wal/sequences &)
+# Adds support for TTYs, optional
+source ~/.cache/wal/colors-tty.sh
+
+### END PYWAL ###
+
+
 # Set up the prompt
 
 autoload -Uz promptinit

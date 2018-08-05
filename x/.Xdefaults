@@ -1,2 +1,8 @@
+urxvt*visualBell: true
+urxvt*iso14755: false
+urxvt*iso14755_52: false
+
 urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
+urxvt*shading: 30
+urxvt*transparent: true
+!urxvt*background: rgba:0000/0000/0200/c800
