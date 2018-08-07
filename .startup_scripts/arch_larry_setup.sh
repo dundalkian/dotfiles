@@ -36,29 +36,31 @@ stow_dots()
     find -P . -maxdepth 1 ! -path "./.*" ! -path "." | sed 's/.\///' | xargs stow
 }
 
- 
+
 cd ~
 git config --global user.email "larrysteele117@gmail.com"
 git config --global user.name "Larry Steele"
 
-sudo pacman -Syu 
-for target in sl vim zsh htop neofetch tree stow tldr curl awk sed i3 rxvt-unicode feh xorg-server xorg-xinit 
+sudo pacman -Syu
+for target in sl vim zsh htop neofetch tree stow tldr curl awk sed i3 rxvt-unicode feh xorg-server xorg-xinit compton python-pip firefox
 do
     sudo pacman -S $target --noconfirm
 done
 
-echo -e "# exec feh --bg-scale /dir\nexec i3" > ~/.xinitrc
-echo "exec /usr/bin/Xorg -nolisten tcp \"\$@\" vt\$XDG_VTNR" > ~/.xserverrc
+for target in pywal
+do
+    sudo pip3 install $target
+done
 
 echo Install dotfiles to your home directory? [y/n]
 read choice
 
 if [ $choice = y ]
-then 
+then
 echo Removing existing dotfiles and symlinking dotfiles to home...
 stow_dots
 cd ~
-else 
+else
 echo Skipping dotfile install
 fi
 echo ALL DONE.
