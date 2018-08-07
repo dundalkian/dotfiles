@@ -9,9 +9,9 @@
 # Import colorscheme from 'wal' asynchronously
 # &    # Run the process in the background
 # ( )  # Hide shell job control messages
-(cat ~/.cache/wal/sequences &)
+#(cat ~/.cache/wal/sequences &)
 # Adds support for TTYs, optional
-source ~/.cache/wal/colors-tty.sh
+#source ~/.cache/wal/colors-tty.sh
 
 ### END PYWAL ###
 
