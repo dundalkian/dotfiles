@@ -42,7 +42,14 @@ git config --global user.email "larrysteele117@gmail.com"
 git config --global user.name "Larry Steele"
 
 sudo pacman -Syu
-for target in sl vim zsh htop neofetch tree stow tldr curl awk sed i3 rxvt-unicode feh xorg-server xorg-xinit compton python-pip firefox
+
+
+for target in sl neofetch tree tldr lolcat
+do
+    sudo pacman -S $target --noconfirm
+done
+
+for target in vim zsh htop stow curl awk sed i3 rxvt-unicode feh xorg-server xorg-xinit compton python-pip firefox dmenu
 do
     sudo pacman -S $target --noconfirm
 done
