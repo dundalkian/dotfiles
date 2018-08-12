@@ -70,5 +70,8 @@ cd ~
 else
 echo Skipping dotfile install
 fi
+
+
+sudo chown -R larry /home/larry/
 echo ALL DONE.
 
