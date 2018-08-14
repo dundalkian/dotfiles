@@ -59,6 +59,9 @@ do
     sudo pip3 install $target
 done
 
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 echo Install dotfiles to your home directory? [y/n]
 read choice
 
