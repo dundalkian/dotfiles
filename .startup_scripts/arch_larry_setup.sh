@@ -49,7 +49,7 @@ do
     sudo pacman -S $target --noconfirm
 done
 
-for target in vim zsh htop stow curl awk sed i3 rxvt-unicode feh xorg-server xorg-xinit compton python-pip firefox dmenu
+for target in vim zsh htop stow curl awk sed rxvt-unicode feh xorg-server xorg-xinit compton python-pip
 do
     sudo pacman -S $target --noconfirm
 done
@@ -59,8 +59,8 @@ do
     sudo pip3 install $target
 done
 
-# Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+## Install oh-my-zsh
+#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo Install dotfiles to your home directory? [y/n]
 read choice
