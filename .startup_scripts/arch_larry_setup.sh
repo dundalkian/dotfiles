@@ -1,11 +1,17 @@
 
-# Get an internet connection
-#sudo apt update
-#sudo apt install git
-#cd ~
+# Install Arch
+
+# When in chroot, install:
+# netctl (should be installed)
+# wpa_supplicant
+# dialog
+#
+# This gives access to the wifi-menu feature of netctl, 
+# which is pretty great to be honest, makes profile management easier.
+
+#sudo pacman -Syu
+#sudo pacman -S install git
 #git clone https://github.com/dundalkian/dotfiles.git
-#cd dotfiles/.startup_scripts
-#sh arch_larry_setup.sh
 
 stow_dots()
 {
@@ -36,6 +42,19 @@ stow_dots()
     find -P . -maxdepth 1 ! -path "./.*" ! -path "." | sed 's/.\///' | xargs stow
 }
 
+# We have manually created a profile but it will not be loaded at boot
+# gets the profile we set up and enables the systemd unit for that profile
+profile=$(netctl list | awk '{print $2}')
+sudo netctl enable $profile
+
+# TODO test profile status and ping something to check connection
+sudo pacman -Syu --noconfirm
+
+for target in ttf-hack vim htop stow sed rxvt-unicode xorg-server xorg-xinit compton python-pip
+do
+	sudo pacman -S $target --noconfirm
+done
+
 
 cd ~
 git config --global user.email "larrysteele117@gmail.com"
@@ -44,12 +63,7 @@ git config --global user.name "Larry Steele"
 sudo pacman -Syu
 
 
-for target in sl neofetch tree tldr lolcat
-do
-    sudo pacman -S $target --noconfirm
-done
-
-for target in vim zsh htop stow curl awk sed rxvt-unicode feh xorg-server xorg-xinit compton python-pip
+for target in 
 do
     sudo pacman -S $target --noconfirm
 done
