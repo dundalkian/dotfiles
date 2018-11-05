@@ -50,31 +50,18 @@ sudo netctl enable $profile
 # TODO test profile status and ping something to check connection
 sudo pacman -Syu --noconfirm
 
-for target in ttf-hack vim htop stow sed rxvt-unicode xorg-server xorg-xinit compton python-pip
+for target in i3-gaps i3blocks i3lock i3status ttf-hack vim htop stow rxvt-unicode xorg-server xorg-xinit
 do
 	sudo pacman -S $target --noconfirm
 done
 
 
-cd ~
 git config --global user.email "larrysteele117@gmail.com"
 git config --global user.name "Larry Steele"
 
 sudo pacman -Syu
 
 
-for target in 
-do
-    sudo pacman -S $target --noconfirm
-done
-
-for target in pywal
-do
-    sudo pip3 install $target
-done
-
-## Install oh-my-zsh
-#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo Install dotfiles to your home directory? [y/n]
 read choice
