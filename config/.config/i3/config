@@ -178,6 +178,12 @@ bindsym $mod+Shift+u exec --no-startup-id sh ~/.scripts/dmenuumount
 # remove title bars and add a small border instead
 for_window [class="^.*"] border pixel 2
 
+# Toggle trackpad (requires xorg-xinput)
+bindsym $mod+Shift+t exec --no-startup-id sh ~/.scripts/toggle_trackpad
+
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {

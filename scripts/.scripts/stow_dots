@@ -1,0 +1,27 @@
+#!/bin/sh
+
+cd ~/dotfiles
+# Remove any existing configuration folders/files that we plan to symlink 
+# (Stow is a very ... unconfrontational command?)
+#
+# Lets break this shit down because I just had to learn basically every character
+# in this command and I know I will forget.
+#
+# -P .  says to not follow symlinks and to start in this directory
+# -maxdepth 2 -mindepth 2  says every folder and file exactly 2 levels down should
+# have its mirror in the home directory removed. This is a result of the structure
+# of the dotfiles repo: {~/dotfiles/zsh/.zshrc} replaces {~/.zshrc} for example
+# ! -path "./.*"  says to not include any first level folder/file with a .dot name
+# {~/dotfiles/zsh/.zshrc} will look like ./zsh/.zshrc and we don't want ./.git/* files
+# This means that any folders not to be stowed can be marked with a .dot
+# | awk -F/ '{print $3}'  pipe output and split on the '/' character (F = Field Separator)
+# print the third column ./zsh/.zshrc becomes [., zsh, .zshrc]
+# xargs -I"{}"  replace all instances of that string {} with stdin
+# rm -rf ~/{}  recursively delete everything in the home directory that is passed in
+# for example will delete ~/.vim/* as well as ~/.zshrc
+find -P . -maxdepth 2 -mindepth 2  ! -path "./.*" | \
+awk -F/ '{print $3}' | xargs -I"{}" rm -rf ~/{}
+# Most of this folows from the last command, we want to stow
+# all top level folders that aren't .dots
+# The sed command is equivalent to sed 's|./||' I believe, replacing './' with ''	
+find -P . -maxdepth 1 ! -path "./.*" ! -path "." | sed 's/.\///' | xargs stow

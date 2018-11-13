@@ -47,6 +47,10 @@ stow_dots()
 profile=$(netctl list | awk '{print $2}')
 sudo netctl enable $profile
 
+# Note: If the normal university wifi networks are too hard to connect to,
+#       can simply wifi-menu to "umd", then navigate to "net.umd.edu"
+#       which should let you put in credentials in a browser
+
 # TODO test profile status and ping something to check connection
 sudo pacman -Syu --noconfirm
 
@@ -61,6 +65,11 @@ git config --global user.name "Larry Steele"
 
 sudo pacman -Syu
 
+# Sets up some default targets for mounting other drives
+# Helpful for the dmenu mount script
+cd /mnt
+sudo mkdir usb0 usb1 usb2 usb3 hd0 hd1 hd2 hd3 windows linux
+cd ~
 
 
 echo Install dotfiles to your home directory? [y/n]
