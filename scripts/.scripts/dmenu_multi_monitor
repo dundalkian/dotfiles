@@ -1,0 +1,32 @@
+#!/bin/sh
+
+
+preset_docked() {
+    xrandr --auto --output HDMI1 --mode 1920x1080 --output DP2 --mode 1920x1080 --left-of HDMI1 --output eDP1 --off
+}
+
+# Sets HDMI slot to mirror laptop screen
+preset_tv() {
+    xrandr --output HDMI1 --same-as eDP1
+}
+
+# Turns off external displays and sets laptop monitor to default setting
+preset_untethered() {
+    xrandr --auto --output HDMI1 --off --output DP2 --off
+}
+
+# may cause issues if xrandr thinks some displays are still connected
+preset_auto() {
+    xrandr --auto
+}
+
+askpreset() { \
+	case $(printf "Docked\\nTV\\nUntethered\\nAuto" | dmenu -i -p "Which xrandr preset do you want to run?") in
+		Docked) preset_docked ;;
+		TV) preset_tv ;;
+        Untethered) preset_untethered ;;
+        Auto) preset_auto ;;
+	esac
+	}
+
+askpreset
