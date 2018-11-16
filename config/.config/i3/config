@@ -173,7 +173,11 @@ gaps outer 15
 
 # Scripts from lukesmith.xyz on mount/unmounting drives via dmenu
 bindsym $mod+Shift+m exec --no-startup-id sh ~/.scripts/dmenumount
-bindsym $mod+Shift+u exec --no-startup-id sh ~/.scripts/dmenuumount
+#bindsym $mod+Shift+u exec --no-startup-id sh ~/.scripts/dmenuumount
+
+bindsym $mod+Shift+d exec --no-startup-id sh ~/.scripts/dmenu_multi_monitor
+
+bindsym $mod+Shift+w exec --no-startup-id feh --randomize --bg-fill ~/.backgrounds/*
 
 # remove title bars and add a small border instead
 for_window [class="^.*"] border pixel 2

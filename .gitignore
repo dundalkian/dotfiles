@@ -10,5 +10,10 @@
 .viminfo
 Session.vim
 .netrwhist
+/backgrounds/.backgrounds/*
+/config/.config/qutebrowser/qsettings/*
 
-/config/.config/browsh/firefox_profile/
+
+# This file holds username/pass for accounts related to scripts such as
+# the background fetch python script which requires reddit credentials
+config.ini

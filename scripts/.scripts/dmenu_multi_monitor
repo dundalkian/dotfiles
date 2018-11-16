@@ -1,6 +1,5 @@
 #!/bin/sh
-
-
+# 
 preset_docked() {
     xrandr --auto --output HDMI1 --mode 1920x1080 --output DP2 --mode 1920x1080 --left-of HDMI1 --output eDP1 --off
 }
