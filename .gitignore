@@ -12,7 +12,10 @@ Session.vim
 .netrwhist
 /backgrounds/.backgrounds/*
 /config/.config/qutebrowser/qsettings/*
-
+/config/.config/pulse/*
+/config/.config/dconf/*
+/config/.config/qutebrowser/autoconfig.yml
+/config/.config/pavucontrol.ini
 
 # This file holds username/pass for accounts related to scripts such as
 # the background fetch python script which requires reddit credentials
