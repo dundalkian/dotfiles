@@ -54,7 +54,7 @@ sudo netctl enable $profile
 # TODO test profile status and ping something to check connection
 sudo pacman -Syu --noconfirm
 
-for target in i3-gaps i3blocks i3lock i3status ttf-hack vim htop stow rxvt-unicode xorg-server xorg-xinit
+for target in i3-gaps i3blocks i3lock i3status ttf-hack vim htop stow rxvt-unicode xorg-server xorg-xinit dmenu
 do
 	sudo pacman -S $target --noconfirm
 done

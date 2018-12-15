@@ -1,0 +1,7 @@
+
+
+
+for target in xf86-video-intel
+do
+    sudo pacman -S $target --noconfirm
+done

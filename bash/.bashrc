@@ -71,5 +71,13 @@ shopt -s cdspell
 
 
 # Larry Additions
-alias ls='ls --color=auto'
 set -o vi
+alias ls='ls --color=always'
+alias less='less --RAW-CONTROL-CHARS'
+alias grep='grep --color=auto'
+
+# This adds aliases for all programs supported by grc, an output colorizer
+[[ -s "/etc/grc.bashrc" ]] && source /etc/grc.bashrc
+
+# Import colorscheme from 'wal' asynchronously
+(cat ~/.cache/wal/sequences &)

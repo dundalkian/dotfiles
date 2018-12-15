@@ -1,0 +1,2 @@
+# Precedes Bash prompt with (ins) or (cmd) depending on mode
+set show-mode-in-prompt on

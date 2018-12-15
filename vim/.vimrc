@@ -21,3 +21,20 @@ set smarttab
 
 set number
 set relativenumber
+
+" Basic stuff above
+
+" This snippet will automatically install vim-plug if not aleady available
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Plugins below, using vim-plug, a minimalistic vim plugin manager
+call plug#begin('~/.vim/pllugged')
+Plug 'dylanaraps/wal.vim'
+call plug#end()
+
+
+colorscheme wal
