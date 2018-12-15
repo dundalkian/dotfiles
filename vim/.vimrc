@@ -36,5 +36,20 @@ call plug#begin('~/.vim/pllugged')
 Plug 'dylanaraps/wal.vim'
 call plug#end()
 
+" make sure specific filetypes are recognized correctly
+autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
+
+" Call the 'groff_compile' command, redraws the screen after external cmd
+function! SaveGroff()
+    silent !groff_compile %
+    redraw!
+endfunction
+
+" Paired with SaveGroff function, this waits for writes to files with groff
+" macro-set extensions
+augroup groff
+    autocmd!
+    au BufWritePost *.ms,*.me,*.mom,*.man call SaveGroff()
+augroup END
 
 colorscheme wal

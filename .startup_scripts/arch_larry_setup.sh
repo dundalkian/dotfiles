@@ -54,7 +54,13 @@ sudo netctl enable $profile
 # TODO test profile status and ping something to check connection
 sudo pacman -Syu --noconfirm
 
-for target in i3-gaps i3blocks i3lock i3status ttf-hack vim htop stow rxvt-unicode xorg-server xorg-xinit dmenu
+# dmenu             : application launcher and universal selection tool
+# w3m               : image drawing package for ranger image previews
+# ranger            : extensible file browser. vim-like
+# zathura           : feature-full pdf viewer. vim-like
+# zathura-pdf-mudf  : zathura extension using the mupdf backend
+
+for target in i3-gaps i3blocks i3lock i3status ttf-hack vim htop stow rxvt-unicode xorg-server xorg-xinit dmenu w3m ranger zathura zathura-pdf-mupdf
 do
 	sudo pacman -S $target --noconfirm
 done

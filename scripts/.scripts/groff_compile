@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Only operates on a single file
+filename="$1"
+
+# Basically turns filename into a string delimited by '.'
+arr=(${filename//./ })
+
+name=${arr[0]}
+
+# Hope you have a good naming convention
+roff_macro_set=${arr[1]}
+
+
+groff -T pdf -m "$roff_macro_set" "$1" > "$name".pdf &

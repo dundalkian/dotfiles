@@ -9,6 +9,14 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+
+
+# Larry basic definitions
+
+set $term --no-startup-id urxvt
+# End Definitions
+
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -31,7 +39,7 @@ font pango:Hack 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -170,6 +178,9 @@ bindsym $mod+r mode "resize"
 # i3-gaps info
 gaps inner 15
 gaps outer 15
+
+bindsym $mod+Shift+f exec $term -e ranger
+
 
 # Scripts from lukesmith.xyz on mount/unmounting drives via dmenu
 bindsym $mod+Shift+m exec --no-startup-id sh ~/.scripts/dmenumount

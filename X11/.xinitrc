@@ -42,8 +42,8 @@ fi
 # Assuming that at that point you intend to use the system for a while.
 # On startup, wifi as well as other systemd services will not be active.
 
-wpa_supplicant
-netctl start wlp2s0-View-House
+#wpa_supplicant
+#netctl start wlp2s0-View-House
 
 # Map capslock to escape and vice-versa
 setxkbmap -option caps:swapescape
