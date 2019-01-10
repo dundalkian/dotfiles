@@ -45,6 +45,8 @@ fi
 #wpa_supplicant
 #netctl start wlp2s0-View-House
 
+export SUDO_ASKPASS="$HOME/.scripts/dmenupass"
+
 # Map capslock to escape and vice-versa
 setxkbmap -option caps:swapescape
 ~/.fehbg & 

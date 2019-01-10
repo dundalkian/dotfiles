@@ -2,5 +2,4 @@
 
 export BROWSER="qutebrowser"
 export TERMINAL="urxvt"
-
-[ -f ~/.bashrc ] && source ~/.bashrc
+export SUDO_ASKPASS="$HOME/.scripts/dmenupass"

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+
+# 311 is setting labeled "Disable While Typing Enabled" 
+curr=$(xinput list-props 16 | grep -Po '(?<=311\):\t)[^ ]+$')
+
+# toggles setting
+curr=$(( ($curr+1)%2 ))
+xinput set-prop 16 "libinput Disable While Typing Enabled" $curr

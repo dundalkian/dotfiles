@@ -196,6 +196,10 @@ for_window [class="^.*"] border pixel 2
 # Toggle trackpad (requires xorg-xinput)
 bindsym $mod+Shift+t exec --no-startup-id sh ~/.scripts/toggle_trackpad
 
+# Toggles "palm detection"
+# When you type, the trackpad will be disabled for a short time
+bindsym $mod+Shift+p exec --no-startup-id sh ~/.scripts/palm_detect_toggle
+
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 
