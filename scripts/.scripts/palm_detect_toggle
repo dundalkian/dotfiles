@@ -1,9 +1,11 @@
 #!/bin/sh
 
+# Gets device number that controls touchpad
+device=$(xinput list | grep -Po 'Touchpad +\tid=\K[[:digit:]]*')
 
 # 311 is setting labeled "Disable While Typing Enabled" 
-curr=$(xinput list-props 16 | grep -Po '(?<=311\):\t)[^ ]+$')
+curr=$(xinput list-props $device | grep -Po '(?<=311\):\t)[^ ]+$')
 
 # toggles setting
 curr=$(( ($curr+1)%2 ))
-xinput set-prop 16 "libinput Disable While Typing Enabled" $curr
+xinput set-prop $device "libinput Disable While Typing Enabled" $curr
