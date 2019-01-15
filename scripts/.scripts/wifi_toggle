@@ -1,0 +1,25 @@
+#!/bin/sh
+
+status=$(rfkill | grep -Po "wlan +[[:alnum:]]+ +\K[[:alpha:]]+")
+echo $status
+
+# Toggles status of the soft block on the wlan device
+if [ "$status" = "unblocked" ]; then
+
+    sudo -A rfkill block wlan
+
+elif [ "$status" == "blocked" ]; then
+
+    sudo -A rfkill unblock wlan
+    
+    # If unblocking, check if wpa_supplicant is already running
+    # If so, the wifi will likely connect automatically. This assumes
+    # that you had previously connected to a network and then blocked your
+    # wlan device and now are attempting to re-enable.
+    if pgrep wpa_supplicant ; then
+        # The colon is the shell no-op
+        :
+    else
+        sudo -A wifi-menu
+    fi
+fi
