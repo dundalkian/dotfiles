@@ -1,0 +1,30 @@
+#!/bin/sh
+
+status=$(rfkill | grep -Po "bluetooth *[[:alnum:]]+ +\K[[:alpha:]]+")
+
+# Another option is to toggle the pulseaudio device as there are few times I
+# actually want the laptop speakers themselves, currently I think the cost is
+# small and if it becomes an issue I'll spin it into another command or make
+# this one prompt me for the option. Currently Pulseaudio starts with startx.
+
+
+# Toggles status of the soft block on the bluetooth device
+if [ "$status" = "unblocked" ]; then
+
+    bluetoothctl power off
+    sudo -A rfkill block bluetooth
+    sudo -A systemctl stop bluetooth
+
+elif [ "$status" == "blocked" ]; then
+
+    sudo -A rfkill unblock bluetooth
+    sudo -A systemctl start bluetooth
+    bluetoothctl power on
+
+    for paired in $(bluetoothctl paired-devices \
+            | grep -Po "Device *\K..:..:..:..:..:..(?= )"); do
+        
+        bluetoothctl connect $paired
+    done
+fi
+

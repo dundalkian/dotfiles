@@ -186,9 +186,9 @@ bindsym $mod+Shift+f exec $term -e ranger
 bindsym $mod+Shift+m exec --no-startup-id sh ~/.scripts/dmenumount
 #bindsym $mod+Shift+u exec --no-startup-id sh ~/.scripts/dmenuumount
 
-bindsym $mod+Shift+d exec --no-startup-id sh ~/.scripts/dmenu_multi_monitor
+bindsym $mod+Shift+s exec --no-startup-id sh ~/.scripts/dmenu_multi_monitor
 
-bindsym $mod+Shift+w exec --no-startup-id feh --randomize --bg-fill ~/.backgrounds/*
+bindsym $mod+Shift+d exec --no-startup-id feh --randomize --bg-fill ~/.backgrounds/*
 
 # remove title bars and add a small border instead
 for_window [class="^.*"] border pixel 2
@@ -199,6 +199,11 @@ bindsym $mod+Shift+t exec --no-startup-id sh ~/.scripts/toggle_trackpad
 # Toggles "palm detection"
 # When you type, the trackpad will be disabled for a short time
 bindsym $mod+Shift+p exec --no-startup-id sh ~/.scripts/palm_detect_toggle
+
+
+bindsym $mod+Shift+w exec --no-startup-id sh ~/.scripts/wifi_toggle
+bindsym $mod+Shift+b exec --no-startup-id sh ~/.scripts/palm_detect_toggle
+
 
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5

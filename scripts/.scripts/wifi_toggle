@@ -1,7 +1,6 @@
 #!/bin/sh
 
 status=$(rfkill | grep -Po "wlan +[[:alnum:]]+ +\K[[:alpha:]]+")
-echo $status
 
 # Toggles status of the soft block on the wlan device
 if [ "$status" = "unblocked" ]; then
@@ -9,7 +8,6 @@ if [ "$status" = "unblocked" ]; then
     sudo -A rfkill block wlan
 
 elif [ "$status" == "blocked" ]; then
-
     sudo -A rfkill unblock wlan
     
     # If unblocking, check if wpa_supplicant is already running
@@ -20,6 +18,7 @@ elif [ "$status" == "blocked" ]; then
         # The colon is the shell no-op
         :
     else
+        # Will start wpa_supplicant as well as the menu
         sudo -A wifi-menu
     fi
 fi
