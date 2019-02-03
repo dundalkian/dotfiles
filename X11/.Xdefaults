@@ -1,4 +1,4 @@
-*.font: Hack Nerd Font Mono 11
+*.font: noto sans mono 11
 
 *foreground: #00cc00
 *foreground_bold: #a8a19f
@@ -33,7 +33,7 @@
 
 URxvt.intensityStyles:	false
 URxvt.depth:		32
-URxvt.font: xft:Hack Nerd Font Mono:pixelsize=14:style=Reglar:antialias=true:hinting=true
+URxvt.font: xft:noto sans mono:pixelsize=14:antialias=true
 URxvt.scrollBar:	false
 URxvt.cursorColor:	white
 URxvt.transparency: true

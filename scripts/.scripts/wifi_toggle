@@ -19,6 +19,6 @@ elif [ "$status" == "blocked" ]; then
         :
     else
         # Will start wpa_supplicant as well as the menu
-        sudo -A wifi-menu
+        urxvt -e sudo -A wifi-menu
     fi
 fi

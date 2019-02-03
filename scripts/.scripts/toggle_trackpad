@@ -4,7 +4,7 @@
 # xinput is required for these changes to happen without reboot
 
 # Figure out what input device is the touchpad
-id=$(xinput list | grep -i touchpad | grep -Po '(?<=id=)\d+')
+id=$(xinput list | grep 'Touchpad' | grep -Po '(?<=id=)\d+')
 
 # List where first element is property id that we need to change if the device
 # is enabled or not, the second is the current setting
