@@ -3,7 +3,7 @@
 rm -f /tmp/locked.png
 
 scrot -m -z /tmp/base.png
-convert /tmp/base.png -blur 0x8 /tmp/locked.png
+convert /tmp/base.png -blur 0x16 /tmp/locked.png
 
 i3lock -e -f -c 000000 -i /tmp/locked.png
 

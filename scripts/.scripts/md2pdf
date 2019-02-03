@@ -1,0 +1,24 @@
+
+zathura=0
+while getopts "z" opt; do
+  case $opt in
+    z)
+      echo "-z was triggered!" >&2
+      zathura=1
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+
+arg=${@:$OPTIND:1}
+filename=$(echo $arg | sed 's/\..*//')
+markdown -o $filename.html $filename.md
+wkhtmltopdf $filename.html $filename.pdf
+rm $filename.html
+
+if (( $zathura ))
+then
+	zathura --fork $filename.pdf
+fi
