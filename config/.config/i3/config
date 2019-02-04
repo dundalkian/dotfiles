@@ -172,7 +172,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
 ## Larry Added (Some things above were edited but this is new features) ##
 
 # i3-gaps info
@@ -191,7 +190,13 @@ bindsym $mod+Shift+s exec --no-startup-id sh ~/.scripts/dmenu_multi_monitor
 bindsym $mod+Shift+d exec --no-startup-id feh --randomize --bg-fill ~/.backgrounds/*
 
 # remove title bars and add a small border instead
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 3
+# class border backgr indicator
+client.focused #9fbc00 #9fbc00 #111111
+client.unfocused #444444 #444444 #315858
+client.focused_inactive #444444 #444444 #2c2c2f
+client.urgent #383a3b #383a3b #ee0000
+
 
 # Toggle trackpad (requires xorg-xinput)
 bindsym $mod+Shift+t exec --no-startup-id sh ~/.scripts/toggle_trackpad
@@ -200,6 +205,9 @@ bindsym $mod+Shift+t exec --no-startup-id sh ~/.scripts/toggle_trackpad
 # When you type, the trackpad will be disabled for a short time
 bindsym $mod+Shift+p exec --no-startup-id sh ~/.scripts/palm_detect_toggle
 
+# Activates passmenu, a dmenu prompt which allows you to grab a password to
+# the clipboard
+bindsym $mod+p exec --no-startup-id passmenu
 
 bindsym $mod+Shift+w exec --no-startup-id sh ~/.scripts/wifi_toggle
 bindsym $mod+Shift+b exec --no-startup-id sh ~/.scripts/bluetooth_toggle
