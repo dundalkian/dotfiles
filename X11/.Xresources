@@ -1,2 +1,3 @@
-
+URxvt.letterSpace: 2
+URxvt*font: xft:unifont:medium:size=12
 

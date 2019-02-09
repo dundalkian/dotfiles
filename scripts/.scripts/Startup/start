@@ -1,4 +1,4 @@
 #!/bin/sh
 
-rfkill block bluetooth
-rfkill block wlan
+#rfkill block bluetooth
+#rfkill block wlan

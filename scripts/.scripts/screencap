@@ -1,0 +1,3 @@
+#!/bin/bash
+
+scrot '%m-%d-%Y_$wx$h.png' -s -e 'mv $f ~/Pictures/Screenshots'

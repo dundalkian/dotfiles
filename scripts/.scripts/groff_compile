@@ -12,4 +12,4 @@ name=${arr[0]}
 roff_macro_set=${arr[1]}
 
 
-groff -T pdf -m "$roff_macro_set" "$1" > "$name".pdf &
+groff -e -T pdf -m "$roff_macro_set" "$1" > "$name".pdf &
