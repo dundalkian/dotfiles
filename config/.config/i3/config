@@ -207,7 +207,7 @@ bindsym $mod+Shift+p exec --no-startup-id sh ~/.scripts/palm_detect_toggle
 
 # Activates passmenu, a dmenu prompt which allows you to grab a password to
 # the clipboard
-bindsym $mod+p exec --no-startup-id passmenu
+bindsym $mod+p exec --no-startup-id ~/.scripts/dmenupass
 
 bindsym $mod+Shift+w exec --no-startup-id sh ~/.scripts/wifi_toggle
 bindsym $mod+Shift+b exec --no-startup-id sh ~/.scripts/bluetooth_toggle

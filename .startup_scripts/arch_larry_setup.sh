@@ -42,10 +42,33 @@ stow_dots()
     find -P . -maxdepth 1 ! -path "./.*" ! -path "." | sed 's/.\///' | xargs stow
 }
 
+all=0
+install_group()
+{
+    if [[ $all -eq 1 ]]
+    then
+        sudo pacman -S $1 --noconfirm
+    else
+        echo Install group: "$1" to your system? [y/n]
+        read choice
+    
+        if [ $choice = y ]
+        then
+            echo Installing...
+            sudo pacman -S "$1"
+        elif [ $choice = all ] 
+        then
+            echo setting all packages to download, sit back and grab a coffee
+            all="1"
+        else
+            echo Skipping install
+        fi
+    fi
+}
 # We have manually created a profile but it will not be loaded at boot
 # gets the profile we set up and enables the systemd unit for that profile
-profile=$(netctl list | awk '{print $2}')
-sudo netctl enable $profile
+#profile=$(netctl list | awk '{print $2}')
+#sudo netctl enable $profile
 
 # Note: If the normal university wifi networks are too hard to connect to,
 #       can simply wifi-menu to "umd", then navigate to "net.umd.edu"
@@ -59,10 +82,30 @@ sudo pacman -Syu --noconfirm
 # ranger            : extensible file browser. vim-like
 # zathura           : feature-full pdf viewer. vim-like
 # zathura-pdf-mudf  : zathura extension using the mupdf backend
+# tldr              : simplified and community-driven manpages. This is a cli client for tldr
 
-for target in i3-gaps i3blocks i3lock i3status ttf-hack vim htop stow rxvt-unicode xorg-server xorg-xinit dmenu w3m ranger zathura zathura-pdf-mupdf
+
+# High priority personally
+systargets="vim htop stow"
+
+# Needed to setup X 
+xtargets="dmenu i3-gaps i3blocks i3lock i3status rxvt-unicode xorg-server xorg-xinit"
+
+productivitytargets="zathura zathura-pdf-mupdf"
+
+beautytargets="ttf-hack python-pywal neofetch"
+
+networking="openssh"
+
+gvim="gvim"
+
+ranger="ranger w3m"
+
+clitargets="powertop tldr"
+
+for group in $systargets $xtargets $productivitytargets $beautytargets $gvim $ranger $clitargets
 do
-	sudo pacman -S $target --noconfirm
+    install_group $group
 done
 
 
