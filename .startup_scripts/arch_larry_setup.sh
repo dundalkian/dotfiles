@@ -47,7 +47,7 @@ install_group()
 {
     if [[ $all -eq 1 ]]
     then
-        sudo pacman -S $1 --noconfirm
+        sudo pacman -S "$1" --noconfirm
     else
         echo Install group: "$1" to your system? [y/n]
         read choice
@@ -55,7 +55,7 @@ install_group()
         if [ $choice = y ]
         then
             echo Installing...
-            sudo pacman -S "$1"
+            sudo pacman -S $1
         elif [ $choice = all ] 
         then
             echo setting all packages to download, sit back and grab a coffee
@@ -93,7 +93,7 @@ xtargets="dmenu i3-gaps i3blocks i3lock i3status rxvt-unicode xorg-server xorg-x
 
 productivitytargets="zathura zathura-pdf-mupdf"
 
-beautytargets="ttf-hack python-pywal neofetch"
+beautytargets="ttf-hack python-pywal feh scrot neofetch"
 
 networking="openssh"
 
@@ -103,9 +103,9 @@ ranger="ranger w3m"
 
 clitargets="powertop tldr"
 
-for group in $systargets $xtargets $productivitytargets $beautytargets $gvim $ranger $clitargets
+for group in "$systargets" "$xtargets" "$productivitytargets" "$beautytargets" "$gvim" "$ranger" "$clitargets"
 do
-    install_group $group
+    install_group "$group"
 done
 
 
