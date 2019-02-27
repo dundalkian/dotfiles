@@ -21,7 +21,7 @@ set smarttab
 
 set number
 set relativenumber
-
+set incsearch
 " Basic stuff above
 
 " This snippet will automatically install vim-plug if not aleady available
