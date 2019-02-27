@@ -4,8 +4,11 @@ status=$(rfkill | grep -Po "wlan +[[:alnum:]]+ +\K[[:alpha:]]+")
 
 # Toggles status of the soft block on the wlan device
 if [ "$status" = "unblocked" ]; then
-
-    sudo -A rfkill block wlan
+    
+    sudo -A pkill wpa_supplicant
+    sudo systemctl stop systemd-resolved
+    sudo pkill dhcpcd
+    sudo rfkill block wlan
 
 elif [ "$status" == "blocked" ]; then
     sudo -A rfkill unblock wlan
@@ -19,8 +22,10 @@ elif [ "$status" == "blocked" ]; then
         :
     else
         # Will start wpa_supplicant as well as the menu
-        #urxvt -e sudo -A wifi-menu
-        sudo -A wpa_supplicant -q -B -i wlp2s0 -D nl80211,wext -c/home/larry/tmp.conf
-        sudo -A dhcpcd -4 -q -t 30 -L wlp2s0
+        urxvt -e sudo wifi-menu
+        sudo systemctl start systemd-resolved
+
+        #sudo -A wpa_supplicant -q -B -i wlp2s0 -D nl80211,wext -c/home/larry/tmp.conf
+        #sudo -A dhcpcd -4 -q -t 30 -L wlp2s0
     fi
 fi

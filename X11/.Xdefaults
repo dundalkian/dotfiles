@@ -34,8 +34,8 @@ URxvt.intensityStyles:	false
 URxvt.depth:		32
 URxvt.scrollBar:	false
 URxvt.cursorColor:	white
-URxvt.transparency: true
-URxvt.shading:      30
+URxvt.transparency: false
+URxvt.shading:      10
 
 
 !! Extensions
@@ -54,5 +54,5 @@ URxvt.resize-font.bigger:	C-Up
 URxvt.url-launcher:	linkhandler
 URxvt.matcher.button:	1
 
-Xft.rgba: none
+Xft.rgba: all
 Xft.hintstyle: hintfull

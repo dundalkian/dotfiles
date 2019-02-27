@@ -75,7 +75,20 @@ set -o vi
 alias ls='ls --color=always'
 alias less='less --RAW-CONTROL-CHARS'
 alias grep='grep --color=auto'
+alias gtcs='cd ~/Spring2019/CMSC330/cmsc330spring19-public'
 
+alias .='cd ..'
+alias ..='cd ../..'
+alias ...='cd ../../..'
+alias ....='cd ../../../..'
+alias .....='cd ../../../../..'
+alias ......='cd ../../../../../..'
+alias .......='cd ../../../../../../..'
+alias ........='cd ../../../../../../../..'
+alias .........='cd ../../../../../../../../..'
+alias ..........='cd ../../../../../../../../../..'
+alias ...........='cd ../../../../../../../../../../..'
+alias ............='cd ../../../../../../../../../../../..'
 # This adds aliases for all programs supported by grc, an output colorizer
 [[ -s "/etc/grc.bashrc" ]] && source /etc/grc.bashrc
 

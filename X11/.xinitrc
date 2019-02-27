@@ -47,10 +47,11 @@ fi
 
 export SUDO_ASKPASS="$HOME/.scripts/dmenupass"
 
+# Restores last colorscheme
+wal -R
+
 # Map capslock to escape and vice-versa
 setxkbmap -option caps:swapescape
 ~/.fehbg & 
 exec i3
 
-# Restores last colorscheme
-wal -R
