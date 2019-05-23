@@ -15,7 +15,7 @@
 
 stow_dots()
 {
-    cd ~/dotfiles
+    cd /home/larry/dotfiles
     # Remove any existing configuration folders/files that we plan to symlink 
     # (Stow is a very ... unconfrontational command?)
     #
@@ -42,6 +42,8 @@ stow_dots()
     find -P . -maxdepth 1 ! -path "./.*" ! -path "." | sed 's/.\///' | xargs stow
 }
 
+echo "larry ALL=(ALL:ALL) ALL" | sudo EDITOR='tee -a' visudo
+
 all=0
 install_group()
 {
@@ -52,11 +54,11 @@ install_group()
         echo Install group: "$1" to your system? [y/n]
         read choice
     
-        if [ $choice = y ]
+        if [ "$choice" = y ]
         then
             echo Installing...
             sudo pacman -S $1
-        elif [ $choice = all ] 
+        elif [ "$choice" = "all" ] 
         then
             echo setting all packages to download, sit back and grab a coffee
             all="1"
@@ -124,7 +126,7 @@ cd ~
 echo Install dotfiles to your home directory? [y/n]
 read choice
 
-if [ $choice = y ]
+if [ "$choice" = y ]
 then
 echo Removing existing dotfiles and symlinking dotfiles to home...
 stow_dots
