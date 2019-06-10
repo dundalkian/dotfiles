@@ -83,9 +83,9 @@ sudo pacman -Syu --noconfirm
 # w3m               : image drawing package for ranger image previews
 # ranger            : extensible file browser. vim-like
 # zathura           : feature-full pdf viewer. vim-like
-# zathura-pdf-mudf  : zathura extension using the mupdf backend
+# zathura-pdf-mudf  : zathura extension using the mupdf backend to allow pdf viewing
 # tldr              : simplified and community-driven manpages. This is a cli client for tldr
-
+# surf              : its ~150MB that might never be used, but its small and near fully featured
 
 # High priority personally
 systargets="vim htop stow"
@@ -97,7 +97,7 @@ productivitytargets="zathura zathura-pdf-mupdf"
 
 beautytargets="ttf-hack python-pywal feh scrot neofetch"
 
-networking="openssh"
+networking="openssh surf"
 
 gvim="gvim"
 
@@ -135,6 +135,7 @@ else
 echo Skipping dotfile install
 fi
 
+sudo powertop --auto-tune
 
 sudo chown -R larry /home/larry/
 echo ALL DONE.
