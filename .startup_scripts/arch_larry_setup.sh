@@ -46,8 +46,7 @@ pacman -Syu
 pacman -S sudo
 useradd -m larry
 echo "larry ALL=(ALL:ALL) ALL" | sudo EDITOR='tee -a' visudo
-su larry
-cd
+cd /home/larry
 # Really want our dotfiles to be in our user's home directory.
 git clone https://github.com/dundalkian/dotfiles.git
 
@@ -57,7 +56,7 @@ install_group()
 {
     if [[ $all -eq 1 ]]
     then
-        sudo pacman -S "$1" --noconfirm
+        pacman -S "$1" --noconfirm
     else
         echo Install group: "$1" to your system? [y/n]
         read choice
@@ -65,7 +64,7 @@ install_group()
         if [ "$choice" = y ]
         then
             echo Installing...
-            sudo pacman -S $1
+            pacman -S $1
         elif [ "$choice" = "all" ] 
         then
             echo setting all packages to download, sit back and grab a coffee
@@ -85,7 +84,7 @@ install_group()
 #       which should let you put in credentials in a browser
 
 # TODO test profile status and ping something to check connection
-sudo pacman -Syu --noconfirm
+pacman -Syu --noconfirm
 
 # dmenu             : application launcher and universal selection tool
 # w3m               : image drawing package for ranger image previews
@@ -127,14 +126,14 @@ done
 git config --global user.email "larrysteele117@gmail.com"
 git config --global user.name "Larry Steele"
 
-sudo pacman -Syu
+pacman -Syu
 
 # Sets up some default targets for mounting other drives
 # Helpful for the dmenu mount script
 cd /mnt
-sudo mkdir usb0 usb1 usb2 usb3 hd0 hd1 hd2 hd3 windows linux
-cd ~
-sudo mkdir Builds Dev
+mkdir usb0 usb1 usb2 usb3 hd0 hd1 hd2 hd3 windows linux
+cd /home/larry
+mkdir Builds Dev
 
 
 echo Install dotfiles to your home directory? [y/n]
@@ -154,8 +153,9 @@ fi
 wal --theme sexy-material
 
 
-sudo chown -R larry /home/larry/
+chown -R larry /home/larry/
 
-sudo rm -rf /root/dotfiles
+rm -rf /root/dotfiles
+
 echo ALL DONE.
-
+su larry
