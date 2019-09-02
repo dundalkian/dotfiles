@@ -42,7 +42,12 @@ stow_dots()
     find -P . -maxdepth 1 ! -path "./.*" ! -path "." | sed 's/.\///' | xargs stow
 }
 
+pacman -Syu
+pacman -S sudo
+useradd -m larry
 echo "larry ALL=(ALL:ALL) ALL" | sudo EDITOR='tee -a' visudo
+su larry
+cd
 
 all=0
 install_group()
@@ -91,7 +96,7 @@ sudo pacman -Syu --noconfirm
 systargets="vim htop stow"
 
 # Needed to setup X 
-xtargets="dmenu i3-gaps i3blocks i3lock i3status rxvt-unicode xorg-server xorg-xinit"
+xtargets="dmenu i3-gaps i3blocks i3lock i3status rxvt-unicode xorg-server xorg-xinit xorg-xinput xorg-xbacklight"
 
 productivitytargets="zathura zathura-pdf-mupdf"
 
@@ -99,13 +104,18 @@ beautytargets="ttf-hack python-pywal feh scrot neofetch"
 
 networking="openssh surf"
 
+clitargets="powertop tldr"
+
 gvim="gvim"
 
 ranger="ranger w3m"
 
-clitargets="powertop tldr"
+browsers="qutebrowser"
 
-for group in "$systargets" "$xtargets" "$productivitytargets" "$beautytargets" "$gvim" "$ranger" "$clitargets"
+xpstargets="xf86-video-intel acpi_call"
+
+
+for group in "$systargets" "$xtargets" "$productivitytargets" "$beautytargets" "$clitargets" "$gvim" "$ranger" "$browsers" "$xpstargets"
 do
     install_group "$group"
 done
@@ -121,6 +131,7 @@ sudo pacman -Syu
 cd /mnt
 sudo mkdir usb0 usb1 usb2 usb3 hd0 hd1 hd2 hd3 windows linux
 cd ~
+sudo mkdir Builds Dev
 
 
 echo Install dotfiles to your home directory? [y/n]
@@ -135,7 +146,10 @@ else
 echo Skipping dotfile install
 fi
 
-sudo powertop --auto-tune
+
+# Sets terminal thmeme to something decent
+wal --theme sexy-material
+
 
 sudo chown -R larry /home/larry/
 echo ALL DONE.
