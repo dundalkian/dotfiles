@@ -48,6 +48,9 @@ useradd -m larry
 echo "larry ALL=(ALL:ALL) ALL" | sudo EDITOR='tee -a' visudo
 su larry
 cd
+# Really want our dotfiles to be in our user's home directory.
+git clone https://github.com/dundalkian/dotfiles.git
+
 
 all=0
 install_group()
@@ -152,5 +155,7 @@ wal --theme sexy-material
 
 
 sudo chown -R larry /home/larry/
+
+sudo rm -rf /root/dotfiles
 echo ALL DONE.
 
