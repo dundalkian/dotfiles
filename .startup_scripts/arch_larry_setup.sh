@@ -5,6 +5,7 @@
 # netctl (should be installed)
 # wpa_supplicant
 # dialog
+# sudo 
 #
 # This gives access to the wifi-menu feature of netctl, 
 # which is pretty great to be honest, makes profile management easier.
@@ -42,13 +43,6 @@ stow_dots()
     find -P . -maxdepth 1 ! -path "./.*" ! -path "." | sed 's/.\///' | xargs stow
 }
 
-pacman -Syu
-pacman -S sudo
-useradd -m larry
-echo "larry ALL=(ALL:ALL) ALL" | sudo EDITOR='tee -a' visudo
-cd /home/larry
-# Really want our dotfiles to be in our user's home directory.
-git clone https://github.com/dundalkian/dotfiles.git
 
 
 all=0
@@ -56,7 +50,7 @@ install_group()
 {
     if [[ $all -eq 1 ]]
     then
-        pacman -S "$1" --noconfirm
+        sudo pacman -S "$1" --noconfirm
     else
         echo Install group: "$1" to your system? [y/n]
         read choice
@@ -64,7 +58,7 @@ install_group()
         if [ "$choice" = y ]
         then
             echo Installing...
-            pacman -S $1
+            sudo pacman -S $1
         elif [ "$choice" = "all" ] 
         then
             echo setting all packages to download, sit back and grab a coffee
@@ -84,40 +78,35 @@ install_group()
 #       which should let you put in credentials in a browser
 
 # TODO test profile status and ping something to check connection
-pacman -Syu --noconfirm
+sudo pacman -Syu --noconfirm
 
 # dmenu             : application launcher and universal selection tool
 # w3m               : image drawing package for ranger image previews
 # ranger            : extensible file browser. vim-like
 # zathura           : feature-full pdf viewer. vim-like
-# zathura-pdf-mudf  : zathura extension using the mupdf backend to allow pdf viewing
+# zathura-pdf-mudf  : zathura extension using the mupdf backend
 # tldr              : simplified and community-driven manpages. This is a cli client for tldr
-# surf              : its ~150MB that might never be used, but its small and near fully featured
+
 
 # High priority personally
 systargets="vim htop stow"
 
 # Needed to setup X 
-xtargets="dmenu i3-gaps i3blocks i3lock i3status rxvt-unicode xorg-server xorg-xinit xorg-xinput xorg-xbacklight"
+xtargets="dmenu i3-gaps i3blocks i3lock i3status rxvt-unicode xorg-server xorg-xinit"
 
 productivitytargets="zathura zathura-pdf-mupdf"
 
 beautytargets="ttf-hack python-pywal feh scrot neofetch"
 
-networking="openssh surf"
-
-clitargets="powertop tldr"
+networking="openssh"
 
 gvim="gvim"
 
 ranger="ranger w3m"
 
-browsers="qutebrowser"
+clitargets="powertop tldr"
 
-xpstargets="xf86-video-intel acpi_call"
-
-
-for group in "$systargets" "$xtargets" "$productivitytargets" "$beautytargets" "$clitargets" "$gvim" "$ranger" "$browsers" "$xpstargets"
+for group in "$systargets" "$xtargets" "$productivitytargets" "$beautytargets" "$gvim" "$ranger" "$clitargets"
 do
     install_group "$group"
 done
@@ -126,15 +115,16 @@ done
 git config --global user.email "larrysteele117@gmail.com"
 git config --global user.name "Larry Steele"
 
-pacman -Syu
+sudo pacman -Syu
 
 # Sets up some default targets for mounting other drives
 # Helpful for the dmenu mount script
 cd /mnt
-mkdir usb0 usb1 usb2 usb3 hd0 hd1 hd2 hd3 windows linux
-cd /home/larry
-mkdir Builds Dev
+sudo mkdir usb0 usb1 usb2 usb3 hd0 hd1 hd2 hd3 windows linux
+cd ~
 
+# loads libinput config file that will allow for realistic (reversed) scrolling in X
+cp ~/dotfiles/.startup_scripts/30-touchpad.conf /etc/X11/xorg.conf.d/
 
 echo Install dotfiles to your home directory? [y/n]
 read choice
@@ -149,13 +139,6 @@ echo Skipping dotfile install
 fi
 
 
-# Sets terminal thmeme to something decent
-wal --theme sexy-material
-
-
-chown -R larry /home/larry/
-
-rm -rf /root/dotfiles
-
+sudo chown -R larry /home/larry/
 echo ALL DONE.
-su larry
+
