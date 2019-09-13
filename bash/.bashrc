@@ -89,6 +89,7 @@ alias .........='cd ../../../../../../../../..'
 alias ..........='cd ../../../../../../../../../..'
 alias ...........='cd ../../../../../../../../../../..'
 alias ............='cd ../../../../../../../../../../../..'
+alias zathura='zathura --fork'
 # This adds aliases for all programs supported by grc, an output colorizer
 [[ -s "/etc/grc.bashrc" ]] && source /etc/grc.bashrc
 

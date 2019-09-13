@@ -124,7 +124,10 @@ sudo mkdir usb0 usb1 usb2 usb3 hd0 hd1 hd2 hd3 windows linux
 cd ~
 
 # loads libinput config file that will allow for realistic (reversed) scrolling in X
-cp ~/dotfiles/.startup_scripts/30-touchpad.conf /etc/X11/xorg.conf.d/
+cp ~/dotfiles/.startup_scripts/Premade_Files/30-touchpad.conf /etc/X11/xorg.conf.d/
+
+# Removes the 3 second pause after a failed PAM authentication
+/home/larry/dotfiles/.startup_scripts/remove_pam_fail_delay
 
 echo Install dotfiles to your home directory? [y/n]
 read choice
