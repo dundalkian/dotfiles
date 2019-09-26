@@ -141,7 +141,11 @@ else
 echo Skipping dotfile install
 fi
 
-
+cd ~ 
+mkdir Builds
+mkdir Dev
+sh ~/dotfiles/.startup_scripts/apply_st_patches
 sudo chown -R larry /home/larry/
+
 echo ALL DONE.
 

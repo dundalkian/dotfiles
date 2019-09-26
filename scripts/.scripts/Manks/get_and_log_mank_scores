@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cat citizen_list | xargs | sed 's/ /,/g' | xargs -n 1 -I _ wget -qO - http://api.manks.org/scores?names=_ | tr -d {} | tr "," "\n" | column -t -s: > manks_scores_$(date +"%Y-%m-%d")
+

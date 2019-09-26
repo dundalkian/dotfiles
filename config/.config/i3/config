@@ -13,7 +13,7 @@
 
 # Larry basic definitions
 
-set $term --no-startup-id urxvt
+set $term --no-startup-id st
 # End Definitions
 
 
@@ -177,7 +177,7 @@ bindsym $mod+r mode "resize"
 
 # i3-gaps info
 gaps inner 15
-gaps outer 15
+gaps outer 10
 
 bindsym $mod+Shift+f exec $term -e ranger
 

@@ -1,6 +1,6 @@
 filename=$(echo $1 | sed 's/\..*//')
-pandoc $filename.md -f gfm -t html -s -o $filename.html
-wkhtmltopdf $filename.html $filename.pdf
-rm $filename.html
+pandoc $filename.md -f gfm -t html -s -o /tmp/$filename.html
+wkhtmltopdf /tmp/$filename.html /tmp/$filename.pdf
+rm /tmp/$filename.html
 
-zathura --fork $filename.pdf
+zathura --fork /tmp/$filename.pdf

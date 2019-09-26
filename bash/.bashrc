@@ -73,9 +73,12 @@ shopt -s cdspell
 # Larry Additions
 set -o vi
 alias ls='ls --color=always'
+alias la='ls -a --color=always'
+alias ll='ls -l --color=always'
+alias llt='ls -lt --color=always'
 alias less='less --RAW-CONTROL-CHARS'
 alias grep='grep --color=auto'
-alias gtcs='cd ~/Spring2019/CMSC330/cmsc330spring19-public'
+alias gtcs='cd ~/Fall2019/CMSC433/'
 
 alias .='cd ..'
 alias ..='cd ../..'
@@ -91,8 +94,10 @@ alias ...........='cd ../../../../../../../../../../..'
 alias ............='cd ../../../../../../../../../../../..'
 alias zathura='zathura --fork'
 alias weather='curl wttr.in'
-# This adds aliases for all programs supported by grc, an output colorizer
-[[ -s "/etc/grc.bashrc" ]] && source /etc/grc.bashrc
+
+function netstart {
+    sudo netctl switch-to "$1"
+}
 
 # Import colorscheme from 'wal' asynchronously
 (cat ~/.cache/wal/sequences &)
