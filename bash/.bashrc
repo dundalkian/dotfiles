@@ -96,6 +96,7 @@ alias zathura='zathura --fork'
 alias weather='curl wttr.in'
 
 function netstart {
+    sudo rfkill unblock wlan
     sudo netctl switch-to "$1"
 }
 
