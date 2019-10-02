@@ -31,6 +31,12 @@ c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', "aw": "https:/
 
 # Bindings for normal mode
 config.bind(',da', 'spawn aria2c -d /home/larry/Downloads/ -k 1M -x 16 -s 16 {clipboard}')
+
+# Bindings for command mode
+# following two bindings allow vim-like movement through the completion window, arrow keys begone!
+config.bind('<Alt+j>', 'completion-item-focus --history next', mode='command')
+config.bind('<Alt+k>', 'completion-item-focus --history prev', mode='command')
+
 config.unbind('d')
 # Bindings for prompt mode
 config.bind('<Ctrl-m>', 'prompt-yes', mode='prompt')
