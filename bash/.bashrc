@@ -95,6 +95,12 @@ alias ............='cd ../../../../../../../../../../../..'
 alias zathura='zathura --fork'
 alias weather='curl wttr.in'
 
+function netstop {
+    sudo rfkill block wlan
+    sudo pkill -9 dhcpcd
+    sudo pkill -9 wpa_supplicant
+}
+
 function netstart {
     sudo rfkill unblock wlan
     sudo netctl switch-to "$1"

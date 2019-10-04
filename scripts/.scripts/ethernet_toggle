@@ -1,2 +1,0 @@
-sudo -A dhcpcd
-sudo systemctl start systemd-resolved

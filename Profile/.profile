@@ -9,5 +9,6 @@ export TERMINAL="st"
 export SUDO_ASKPASS="$HOME/.scripts/dmenupass"
 export EDITOR="vim"
 
+wal -R
 sudo powertop --auto-tune &
 sudo rfkill block wlan
