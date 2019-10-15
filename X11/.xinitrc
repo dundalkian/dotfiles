@@ -51,7 +51,7 @@ export SUDO_ASKPASS="$HOME/.scripts/dmenupass"
 wal -R
 
 # Map capslock to escape and vice-versa
-setxkbmap -option caps:swapescape
+#setxkbmap -option caps:swapescape
 ~/.fehbg & 
 exec i3
 

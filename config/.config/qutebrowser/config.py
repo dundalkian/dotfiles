@@ -27,7 +27,7 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # used by prepending the search engine name to the search term, e.g.
 # `:open google qutebrowser`.
 # Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', "aw": "https://wiki.archlinux.org/?search={}", "py": "https://docs.python.org/3.7/search.html?q={}"}
+c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', "aw": "https://wiki.archlinux.org/?search={}", "py": "https://docs.python.org/3/search.html?q={}"}
 
 # Bindings for normal mode
 config.bind(',da', 'spawn aria2c -d /home/larry/Downloads/ -k 1M -x 16 -s 16 {clipboard}')

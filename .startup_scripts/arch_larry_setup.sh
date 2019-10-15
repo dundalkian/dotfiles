@@ -129,8 +129,11 @@ sudo cp ~/dotfiles/.startup_scripts/Premade_Files/30-touchpad.conf /etc/X11/xorg
 # loads kernel driver configuration file to limit audio power usage
 sudo cp ~/dotfiles/.startup_scripts/Premade_Files/idle-audio.conf
 
+sudo cp ~/dotfiles/.startup_scripts/Premade_Files/10-my-modifiers.hwdb /etc/udev/hwdb.d/
 # Removes the 3 second pause after a failed PAM authentication
 /home/larry/dotfiles/.startup_scripts/remove_pam_fail_delay
+
+
 
 echo Install dotfiles to your home directory? [y/n]
 read choice

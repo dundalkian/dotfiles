@@ -1,0 +1,2 @@
+evdev:*                       # match all the damn keyboards
+ KEYBOARD_KEY_3a=esc          # bind capslock physical key to escape action

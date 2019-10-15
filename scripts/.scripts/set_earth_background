@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-
+# sizes: 339 | 678 | 1808 | 5424 | 10848
 urlString="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/{}_GOES16-ABI-FD-GEOCOLOR-1808x1808.jpg"
 
 # Year, day within year, minutes, 30 minutes previous, floored to nearest 10 minute.
