@@ -1,0 +1,6 @@
+#!/bin/sh
+
+choice=$(ls ~/.scripts -R1 --color=never | grep -E ^[a-z] | dmenu)
+
+# put everything important in your path
+$choice

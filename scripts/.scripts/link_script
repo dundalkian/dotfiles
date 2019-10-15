@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+sudo ln -vs $(pwd)/$1 /usr/local/bin/

@@ -22,6 +22,9 @@ set smarttab
 set number
 set relativenumber
 set incsearch
+
+" Pasting from X11 clipboard is much better in this mode
+set paste
 " Basic stuff above
 
 " This snippet will automatically install vim-plug if not aleady available
