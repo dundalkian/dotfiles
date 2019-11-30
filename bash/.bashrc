@@ -79,6 +79,7 @@ alias llt='ls -lt --color=always'
 alias less='less --RAW-CONTROL-CHARS'
 alias grep='grep --color=auto'
 alias gtcs='cd ~/Fall2019/CMSC433/'
+alias deepthought='ssh cmsc433-1u32@login.deepthought2.umd.edu'
 
 alias .='cd ..'
 alias ..='cd ../..'
@@ -103,7 +104,7 @@ function netstop {
 
 function netstart {
     sudo rfkill unblock wlan
-    sudo netctl switch-to "$1"
+	find /etc/netctl -maxdepth 1 -type f -printf %f\\n | mpick | xargs sudo netctl switch-to
 }
 
 # Import colorscheme from 'wal' asynchronously
