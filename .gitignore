@@ -20,3 +20,4 @@ Session.vim
 # This file holds username/pass for accounts related to scripts such as
 # the background fetch python script which requires reddit credentials
 config.ini
+google_ddns_update
