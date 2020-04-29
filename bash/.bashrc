@@ -106,6 +106,3 @@ function netstart {
     sudo rfkill unblock wlan
 	find /etc/netctl -maxdepth 1 -type f -printf %f\\n | mpick | xargs sudo netctl switch-to
 }
-
-# Import colorscheme from 'wal' asynchronously
-(cat ~/.cache/wal/sequences &)

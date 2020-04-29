@@ -13,7 +13,7 @@
 
 # Larry basic definitions
 
-set $term --no-startup-id st
+set $term --no-startup-id kitty
 # End Definitions
 
 
@@ -191,7 +191,7 @@ bindsym $mod+Shift+s exec --no-startup-id sh ~/.scripts/dmenu_multi_monitor
 bindsym $mod+Shift+d exec --no-startup-id feh --randomize --bg-fill ~/.backgrounds/*
 
 # remove title bars and add a small border instead
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 # class border backgr indicator
 client.focused #9fbc00 #9fbc00 #111111
 client.unfocused #444444 #444444 #315858

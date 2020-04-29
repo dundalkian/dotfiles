@@ -28,31 +28,31 @@ set paste
 " Basic stuff above
 
 " This snippet will automatically install vim-plug if not aleady available
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+"if empty(glob('~/.vim/autoload/plug.vim'))
+"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"endif
 
 " Plugins below, using vim-plug, a minimalistic vim plugin manager
-call plug#begin('~/.vim/pllugged')
-Plug 'dylanaraps/wal.vim'
-call plug#end()
+"call plug#begin('~/.vim/pllugged')
+"Plug 'dylanaraps/wal.vim'
+"call plug#end()
 
 " make sure specific filetypes are recognized correctly
-autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
+"autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 
 " Call the 'groff_compile' command, redraws the screen after external cmd
-function! SaveGroff()
-    silent !groff_compile %
-    redraw!
-endfunction
+"function! SaveGroff()
+"    silent !groff_compile %
+"    redraw!
+"endfunction
 
 " Paired with SaveGroff function, this waits for writes to files with groff
 " macro-set extensions
-augroup groff
-    autocmd!
-    au BufWritePost *.ms,*.me,*.mom,*.man call SaveGroff()
-augroup END
+"augroup groff
+"    autocmd!
+"    au BufWritePost *.ms,*.me,*.mom,*.man call SaveGroff()
+"augroup END
 
-colorscheme wal
+"colorscheme wal
