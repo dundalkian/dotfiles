@@ -1,3 +1,5 @@
+#!/bin/sh
+
 curl -s https://username:password@domains.google.com/nic/update?hostname=sub.domain.tld | awk '{print $1 " - www - " strftime("%Y-%m-%d")}' >> output.log
 
 And then again for each subdomain you need to add

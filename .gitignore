@@ -21,3 +21,4 @@ Session.vim
 # the background fetch python script which requires reddit credentials
 config.ini
 google_ddns_update
+output.log
