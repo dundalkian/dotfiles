@@ -1,0 +1,21 @@
+#!/bin/bash
+
+################
+##INSTALLATION##
+################
+
+##Select the mirrors##
+
+# Save a backup of the mirrorlist just in case
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+
+# Pull all up to date mirrors from the US. Uncomments that list,
+# tests speeds for all and outputs top 10 to a new mirrorlist,
+# which should be copied over by pacstrap
+curl -s "https://www.archlinux.org/mirrorlist/?country=US&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 - > /etc/pacman.d/mirrorlist
+
+##Install essential packages##
+
+
+
+
