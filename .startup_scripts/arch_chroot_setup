@@ -34,7 +34,8 @@ echo "Please enter a username for the primary user (will be given root access)
 Note that they will be given the same password as root, you should probably change this
 but that's how I like to run my system"
 read var_username
-useradd -m $var_username -p $var_root_password
+useradd -m $var_username
+echo "$var_username:$var_root_password" | chpasswd
 echo "$var_username ALL=(ALL:ALL) ALL" | sudo EDITOR='tee -a' visudo
 
 # This line is pretty opinionated

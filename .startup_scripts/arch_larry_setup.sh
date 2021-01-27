@@ -1,6 +1,15 @@
 
 # Install Arch
 
+sudo bash -c 'cat /root/dotfiles/.startup_scripts/Premade_Files/iwd_main.conf > /etc/iwd/main.conf'
+
+sudo systemctl start iwd
+sudo systemctl start systemd-resolved
+
+sudo systemctl enable iwd
+sudo systemctl enable systemd-resolved
+
+sudo iwctl
 sudo pacman -Syu
 cd ~
 git clone https://github.com/dundalkian/dotfiles.git
@@ -87,12 +96,17 @@ ranger="ranger w3m"
 
 clitargets="powertop tldr"
 
-for group in "$systargets" "$xtargets" "$productivitytargets" "$beautytargets" "$gvim" "$ranger" "$clitargets"
+nv="xf86-video-nouveau"
+amd="xf86-video-amdgpu"
+
+for group in "$systargets" "$xtargets" "$productivitytargets" "$beautytargets" "$gvim" "$ranger" "$clitargets" "$nv" "$amd"
 do
     install_group "$group"
 done
 
-
+# Sometime after this summer password based auth for github will fail
+# so I'll need to work in some sort of auto-ssh key import. Or import
+# the personal access tokens.
 git config --global user.email "larrysteele117@gmail.com"
 git config --global user.name "Larry Steele"
 
