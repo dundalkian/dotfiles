@@ -1,22 +1,13 @@
 
 # Install Arch
 
-# When in chroot, install:
-# netctl (should be installed)
-# wpa_supplicant
-# dialog
-# sudo 
-#
-# This gives access to the wifi-menu feature of netctl, 
-# which is pretty great to be honest, makes profile management easier.
-
-#sudo pacman -Syu
-#sudo pacman -S install git
-#git clone https://github.com/dundalkian/dotfiles.git
+sudo pacman -Syu
+cd ~
+git clone https://github.com/dundalkian/dotfiles.git
 
 stow_dots()
 {
-    cd /home/larry/dotfiles
+    cd ~/dotfiles
     # Remove any existing configuration folders/files that we plan to symlink 
     # (Stow is a very ... unconfrontational command?)
     #
@@ -68,16 +59,6 @@ install_group()
         fi
     fi
 }
-# We have manually created a profile but it will not be loaded at boot
-# gets the profile we set up and enables the systemd unit for that profile
-#profile=$(netctl list | awk '{print $2}')
-#sudo netctl enable $profile
-
-# Note: If the normal university wifi networks are too hard to connect to,
-#       can simply wifi-menu to "umd", then navigate to "net.umd.edu"
-#       which should let you put in credentials in a browser
-
-# TODO test profile status and ping something to check connection
 sudo pacman -Syu --noconfirm
 
 # dmenu             : application launcher and universal selection tool
@@ -124,6 +105,7 @@ sudo mkdir usb0 usb1 usb2 usb3 hd0 hd1 hd2 hd3 windows linux
 cd ~
 
 # loads libinput config file that will allow for realistic (reversed) scrolling in X
+sudo mkdir -p /etc/X11/xorg.conf.d/
 sudo cp ~/dotfiles/.startup_scripts/Premade_Files/30-touchpad.conf /etc/X11/xorg.conf.d/
 
 # loads kernel driver configuration file to limit audio power usage
@@ -131,7 +113,7 @@ sudo cp ~/dotfiles/.startup_scripts/Premade_Files/idle-audio.conf
 
 sudo cp ~/dotfiles/.startup_scripts/Premade_Files/10-my-modifiers.hwdb /etc/udev/hwdb.d/
 # Removes the 3 second pause after a failed PAM authentication
-/home/larry/dotfiles/.startup_scripts/remove_pam_fail_delay
+~/dotfiles/.startup_scripts/remove_pam_fail_delay
 
 
 
@@ -150,7 +132,7 @@ fi
 cd ~ 
 mkdir Builds
 mkdir Dev
-sh ~/dotfiles/.startup_scripts/apply_st_patches
+#sh ~/dotfiles/.startup_scripts/apply_st_patches
 sudo chown -R larry /home/larry/
 
 echo ALL DONE.

@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# Uses mpick to help select the time zone with less user effort
+cd /root
+git clone https://github.com/dundalkian/mpick.git
+find /usr/share/zoneinfo | /root/mpick/mpick | xargs -I '{}' ln -sf '{}' /etc/localtime
+
+
+hwclock --systohc
+
+sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
+
+locale-gen
+
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+
+echo "Now for the most important step. What will be the hostname of this system?"
+read var_hostname
+
+echo $var_hostname > /etc/hostname
+
+echo "127.0.0.1		localhost" > /etc/hosts
+echo "::1		localhost" >> /etc/hosts
+echo "127.0.1.1		$var_hostname.localdomain	$var_hostname" >> /etc/hosts
+
+
+echo "Finished writing files out to /etc/hostname and /etc/hosts."
+
+echo "Please enter a password for the root account"
+read var_root_password
+echo "root:$var_root_password" | chpasswd
+
+echo "Please enter a username for the primary user (will be given root access)
+Note that they will be given the same password as root, you should probably change this
+but that's how I like to run my system"
+read var_username
+useradd -m $var_username -p $var_root_password
+echo "$var_username ALL=(ALL:ALL) ALL" | sudo EDITOR='tee -a' visudo
+
+# This line is pretty opinionated
+echo "$var_username ALL=(root) NOPASSWD: /usr/bin/powertop, /usr/bin/rfkill" | sudo EDITOR='tee -a' visudo
+
+echo "Final steps for you to do are:
+   - Choosing and installing a bootloader if required
+   - Exit this chroot
+   - unmount with 'umount -R /mnt'
+   - enter 'reboot' to reboot."
+

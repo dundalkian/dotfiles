@@ -4,17 +4,39 @@
 ##INSTALLATION##
 ################
 
+##Partition/Format Management##
+
+# Yeah lmao you have to do this yourself I'm not going to let this script
+# wipe a drive by accident.
+
+
 ##Select the mirrors##
 
+# This section is commented out because while a decent solution, the modern
+# archiso will run reflector in the background and auto-update the mirrorlist
+# relatively decently. If there is ever a change to that, this can be readded.
+
+
 # Save a backup of the mirrorlist just in case
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+#cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 
 # Pull all up to date mirrors from the US. Uncomments that list,
 # tests speeds for all and outputs top 10 to a new mirrorlist,
 # which should be copied over by pacstrap
-curl -s "https://www.archlinux.org/mirrorlist/?country=US&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 - > /etc/pacman.d/mirrorlist
+#curl -s "https://www.archlinux.org/mirrorlist/?country=US&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 - > /etc/pacman.d/mirrorlist
+
+# You'll have to pacman -Sy and pacman -S git
 
 ##Install essential packages##
+pacstrap /mnt base base-devel linux linux-firmware git iwd vim stow htop openssh tldr man-db man-pages python wget
+echo "Finished installing a base set of system packages"
+
+##Configure the system##
+
+genfstab -U /mnt >> /mnt/etc/fstab
+echo "Check the created fstab file at /mnt/etc/fstab for correctness"
+
+echo "Live environment portion is complete, to continue enter 'arch-chroot /mnt'"
 
 
 
