@@ -28,8 +28,22 @@
 # You'll have to pacman -Sy and pacman -S git
 
 ##Install essential packages##
+
+# Before pacstrap is run, we need to make sure our mirrorlist has been sorted, as this mirrorlist will be
+# copied into the new system
+
+cnt=0
+until systemctl status reflector | grep exited
+do
+	echo -en "\r\033[0K Waiting for reflector to finish sorting our mirrorlist ($cnt)"
+	let cnt++
+	sleep 1
+done
 pacstrap /mnt base base-devel linux linux-firmware git iwd vim stow htop openssh tldr man-db man-pages python wget
 echo "Finished installing a base set of system packages"
+
+cd /mnt/root
+git clone https://github.com/dundalkian/dotfiles.git
 
 ##Configure the system##
 
@@ -37,7 +51,3 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "Check the created fstab file at /mnt/etc/fstab for correctness"
 
 echo "Live environment portion is complete, to continue enter 'arch-chroot /mnt'"
-
-
-
-
