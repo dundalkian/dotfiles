@@ -96,7 +96,9 @@ ranger="ranger w3m"
 
 clitargets="powertop tldr"
 
-nv="xf86-video-nouveau"
+# Had some issues with my current card using nouveau.
+#nv="xf86-video-nouveau"
+nv="nvidia"
 amd="xf86-video-amdgpu"
 
 for group in "$systargets" "$xtargets" "$productivitytargets" "$beautytargets" "$gvim" "$ranger" "$clitargets" "$nv" "$amd"
