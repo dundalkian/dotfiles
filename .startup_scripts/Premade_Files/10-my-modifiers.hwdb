@@ -1,2 +1,11 @@
-evdev:*                       # match all the damn keyboards
+# This file attempts to remap the capslock scancode to the escape keycode. Mainly for vim usage, which a lot of this
+# install is based around. It should attempt to bind to any usb or internal keyboard, but I only have so many to test.
+# I believe this currently covers all my bases, but if future me runs into any problems check out these references:
+# https://wiki.archlinux.org/index.php/Keyboard_input#Identifying_scancodes
+# https://wiki.archlinux.org/index.php/Map_scancodes_to_keycodes
+
+evdev:input:*                       # Should match all USB keyboards and apply a rule that binds capslock scancode to escape keycode
+ KEYBOARD_KEY_70039=esc          # bind capslock physical key to escape action
+
+evdev:atkbd:*                       # Should match all AT keyboards (such as internal laptop keyboards) and apply the same rule as above
  KEYBOARD_KEY_3a=esc          # bind capslock physical key to escape action
