@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# The purpose of this script is to temporarily find and mount the
+# EFI partition to allow a grub-mkconfig command with os-prober
+# to find and write the Windows bootloader into grub.cfg
+
+efi_partition=$(sudo fdisk -l | grep "EFI" | awk '{print $1}')
+tmp_mnt="/mnt/tmp_grub_config_mount_point"
+
+sudo mkdir $tmp_mnt
+sudo mount $efi_partition $tmp_mnt
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+sudo umount /mnt/tmp_grub_config_mount_point
+sudo rmdir $tmp_mnt
