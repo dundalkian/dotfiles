@@ -13,7 +13,7 @@
 
 # Larry basic definitions
 
-set $term --no-startup-id kitty
+set $term --no-startup-id urxvt
 # End Definitions
 
 

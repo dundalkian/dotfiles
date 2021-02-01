@@ -43,3 +43,6 @@ config.bind('<Alt+k>', 'completion-item-focus --history prev', mode='command')
 config.unbind('d')
 # Bindings for prompt mode
 config.bind('<Ctrl-m>', 'prompt-yes', mode='prompt')
+
+# This is required for qutebrowser v2.0.0 It will load autoconfig.yml which is set through the qutebrowser gui
+config.load_autoconfig()
