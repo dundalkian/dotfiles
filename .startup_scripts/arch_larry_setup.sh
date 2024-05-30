@@ -1,18 +1,18 @@
 
 # Install Arch
 
-sudo bash -c 'cat /root/dotfiles/.startup_scripts/Premade_Files/iwd_main.conf > /etc/iwd/main.conf'
+#sudo bash -c 'cat /root/dotfiles/.startup_scripts/Premade_Files/iwd_main.conf > /etc/iwd/main.conf'
 
-sudo systemctl start iwd
-sudo systemctl start systemd-resolved
+#sudo systemctl start iwd
+#sudo systemctl start systemd-resolved
 
-sudo systemctl enable iwd
-sudo systemctl enable systemd-resolved
+#sudo systemctl enable iwd
+#sudo systemctl enable systemd-resolved
 
-sudo iwctl
+#sudo iwctl
 sudo pacman -Syu
 cd ~
-git clone https://github.com/dundalkian/dotfiles.git
+#git clone https://github.com/dundalkian/dotfiles.git
 
 stow_dots()
 {
@@ -82,24 +82,24 @@ sudo pacman -Syu --noconfirm
 systargets="vim htop stow"
 
 # Needed to setup X 
-xtargets="dmenu i3-gaps i3blocks i3lock i3status rxvt-unicode xorg-server xorg-xinit"
+xtargets="dmenu i3-gaps i3blocks i3lock i3status rxvt-unicode xorg-server xorg-xinit kitty"
 
 productivitytargets="zathura zathura-pdf-mupdf"
 
 beautytargets="ttf-hack python-pywal feh scrot neofetch"
 
-networking="openssh"
+#networking="openssh"
 
 gvim="gvim"
 
 ranger="ranger w3m"
 
-clitargets="powertop tldr"
+#clitargets="powertop tldr"
 
 # Had some issues with my current card using nouveau.
 #nv="xf86-video-nouveau"
-nv="nvidia"
-amd="xf86-video-amdgpu"
+#nv="nvidia"
+#amd="xf86-video-amdgpu"
 
 for group in "$systargets" "$xtargets" "$productivitytargets" "$beautytargets" "$gvim" "$ranger" "$clitargets" "$nv" "$amd"
 do
@@ -121,11 +121,11 @@ sudo mkdir usb0 usb1 usb2 usb3 hd0 hd1 hd2 hd3 windows linux
 cd ~
 
 # loads libinput config file that will allow for realistic (reversed) scrolling in X
-sudo mkdir -p /etc/X11/xorg.conf.d/
-sudo cp ~/dotfiles/.startup_scripts/Premade_Files/30-touchpad.conf /etc/X11/xorg.conf.d/
+#sudo mkdir -p /etc/X11/xorg.conf.d/
+#sudo cp ~/dotfiles/.startup_scripts/Premade_Files/30-touchpad.conf /etc/X11/xorg.conf.d/
 
 # loads kernel driver configuration file to limit audio power usage
-sudo cp ~/dotfiles/.startup_scripts/Premade_Files/idle-audio.conf
+#sudo cp ~/dotfiles/.startup_scripts/Premade_Files/idle-audio.conf
 
 sudo cp ~/dotfiles/.startup_scripts/Premade_Files/10-my-modifiers.hwdb /etc/udev/hwdb.d/
 # Removes the 3 second pause after a failed PAM authentication

@@ -1,3 +1,4 @@
 URxvt.letterSpace: -1
 URxvt*font: xft:Hack:style=Regular:size=9
 
+Xft.dpi: 144
